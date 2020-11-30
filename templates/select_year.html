@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href='../static/select_year_css.css'>
+    <title>感想文分類システム-年一覧</title>
+</head>
+<body>
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% for pankuzu in pankuzu_list %}
+                <li class="breadcrumb-item">
+                    <a href="{{pankuzu.href}}">{{pankuzu.display_name}}</a>
+                </li>
+                {% endfor %}
+            </ol>
+        </nav>
+        <h1>{{ options }}の年一覧</h1>
+        <form action="/select_year" method="POST">
+            <div class="center-block">
+                <input type="radio" name="year-options" id="year_radio1" value="2019年" required>
+                <label for="year_radio1">2019年</label><br>
+                <input type="radio" name="year-options" id="year_radio2" value="2020年">
+                <label for="year_label2">2020年</label><br>
+                <input type="submit" class="btn btn-primary" name="select-year-submit" id="" value="決定">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
